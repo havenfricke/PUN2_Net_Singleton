@@ -395,9 +395,3 @@ Use these for **queries only**, never for control flow.
 
 ---
 
-## Guiding Rule
-
-> Gameplay code should feel **single-player first**.
-> Networking is a **service**, not a dependency.
-
-`Net` exists to enforce that separation.

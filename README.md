@@ -4,7 +4,7 @@ Pairs extremely well with my [Unity 6 input module](https://github.com/havenfric
 
 A clean, **single-responsibility network facade** for Unity + Photon PUN.
 
-This document describes the **public API surface of `Net`, including required arguments, intent, and when to use each method. Gameplay code should interact only with `Net.Instance` and (locally) its own `PhotonView`.
+This document describes the public API surface of `Net`, including required arguments, intent, and when to use each method. Gameplay code should interact only with `Net.Instance` and (locally) its own `PhotonView`.
 
 ---
 

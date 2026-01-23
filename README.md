@@ -360,7 +360,7 @@ Unsubscribes from an event code.
 
 ---
 
-## Performance & Networking Control
+### Performance & Networking Control
 
 ```csharp
 void SetSendRates(int sendRate, int serializationRate)
@@ -378,7 +378,7 @@ Immediately flushes outgoing network traffic.
 
 ---
 
-## Read-Only State Accessors
+### Read-Only State Accessors
 
 ```csharp
 bool IsConnected { get; }

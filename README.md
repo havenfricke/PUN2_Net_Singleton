@@ -1,4 +1,4 @@
-# Net Singleton API Reference (Photon PUN)
+## Net Singleton API Reference (Photon PUN)
 
 A clean, **single-responsibility network facade** for Unity + Photon PUN.
 
@@ -6,7 +6,7 @@ This document describes the **public API surface of `Net`**, including **require
 
 ---
 
-## Design Contract
+### Design Contract
 
 * Gameplay scripts:
 
@@ -22,7 +22,7 @@ This document describes the **public API surface of `Net`**, including **require
 
 ---
 
-## Connection & Session Flow
+### Connection & Session Flow
 
 ```csharp
 bool ConnectUsingSettings()
@@ -89,7 +89,7 @@ Reconnects and attempts to rejoin the previous room.
 
 ---
 
-## Lobby & Room Management
+### Lobby & Room Management
 
 ```csharp
 bool JoinLobby()
@@ -322,7 +322,7 @@ Private, encrypted RPC to one player.
 
 ---
 
-## RaiseEvent (Transient Signals)
+### RaiseEvent (Transient Signals)
 
 ```csharp
 bool RaiseEvent(

@@ -181,7 +181,7 @@ Forcibly removes a player from the room.
 
 ---
 
-## Networked Object Lifecycle
+### Networked Object Lifecycle
 
 ```
 GameObject Instantiate(
@@ -265,7 +265,7 @@ Destroys objects using the player's actor number.
 
 ---
 
-## RPC Facade (Deterministic State Sync)
+### RPC Facade (Deterministic State Sync)
 
 ```
 void Rpc(

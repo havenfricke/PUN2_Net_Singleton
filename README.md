@@ -4,19 +4,19 @@ Pairs extremely well with my [Unity 6 input module](https://github.com/havenfric
 
 A clean, **single-responsibility network facade** for Unity + Photon PUN.
 
-This document describes the public API surface of `Net`, including required arguments, intent, and when to use each method. Gameplay code should interact only with `Net.Instance` and (locally) its own `PhotonView`.
+This document describes the public API surface of Net, including required arguments, intent, and when to use each method. Gameplay code should interact only with Net.Instance and (locally) its own PhotonView.
 
 ---
 
 ### Design Contract
 Gameplay scripts:
-- Call `Net.Instance`
-- Own a `PhotonView`
-- Never reference `PhotonNetwork`
+- Call Net.Instance
+- Own a PhotonView
+- Never reference PhotonNetwork
 
 Net:
 - Owns Photon callbacks
-- Connects `PhotonNetwork`
+- Connects PhotonNetwork
 - Routes intent (connect, sync, events)
 
 ---
@@ -27,7 +27,7 @@ Net:
 bool ConnectUsingSettings()
 ```
 
-Connects using values from `PhotonServerSettings`
+Connects using values from PhotonServerSettings
 
 Use at application startup.
 
@@ -173,7 +173,7 @@ Transfers master-client authority.
 
 ---
 
-```csharp
+```
 bool CloseConnection(Player kickPlayer)
 ```
 
@@ -277,7 +277,7 @@ void Rpc(
 ```
 
 Invokes a PunRPC method on one or more clients.
-Use for **authoritative gameplay state**.
+Use for authoritative gameplay state.
 
 ---
 

@@ -95,6 +95,26 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
         );
     }
 
+    public void CrossFade(string stateName, float transitionDuration, int layer = 0, float normalizedTime = 0f)
+    {
+        if (string.IsNullOrEmpty(stateName))
+        {
+            throw new ArgumentException("stateName must be non-empty.", nameof(stateName));
+        }
+
+        animator.CrossFade(stateName, transitionDuration, layer, normalizedTime);
+
+        if (!photonView.IsMine)
+            return;
+
+        Net.Instance.Rpc(
+            view: photonView,
+            methodName: "Rpc_CrossFade",
+            target: RpcTarget.Others,
+            parameters: new object[] { stateName, transitionDuration, layer, normalizedTime }
+        );
+    }
+
     [PunRPC]
     private void Rpc_SetTrigger(string triggerName)
     {
@@ -126,5 +146,16 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
         }
 
         this.animator.SetFloat(floatName, value);
+    }
+
+    [PunRPC]
+    private void Rpc_CrossFade(string stateName, float transitionDuration, int layer, float normalizedTime)
+    {
+        if (string.IsNullOrEmpty(stateName))
+        {
+            return;
+        }
+
+        this.animator.CrossFade(stateName, transitionDuration, layer, normalizedTime);
     }
 }

@@ -4,6 +4,7 @@ using Photon.Pun;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
 
+[RequireComponent(typeof(NetAutoJoin))]
 public sealed class NetPingTest : MonoBehaviour
 {
     private const byte EventCodePing = 1;

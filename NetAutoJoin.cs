@@ -1,6 +1,8 @@
 using UnityEngine;
 using Photon.Realtime;
 
+// IMPORTANT: This script is intended to go on a GameObject in the Unity scene where the player joins the server
+
 [RequireComponent(typeof(PhotonView))]
 public sealed class NetAutoJoin : MonoBehaviour
 {

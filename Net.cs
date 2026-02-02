@@ -524,10 +524,7 @@ public sealed class Net : MonoBehaviourPunCallbacks, IOnEventCallback
         }
     }
 
-    // -----------------------------
     // IOnEventCallback (RaiseEvent receive)
-    // -----------------------------
-
     public void OnEvent(EventData photonEvent)
     {
         if (photonEvent == null)

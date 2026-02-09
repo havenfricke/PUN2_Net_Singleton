@@ -23,7 +23,7 @@ Net:
 
 ### Connection & Session Flow
 
-```
+```csharp
 bool ConnectUsingSettings()
 ```
 
@@ -33,7 +33,7 @@ Use at application startup.
 
 ---
 
-```
+```csharp
 bool ConnectUsingSettings(AppSettings appSettings, bool startInOfflineMode)
 ```
 
@@ -49,7 +49,7 @@ Direct connection to a specific master server.
 
 ---
 
-```
+```csharp
 bool ConnectToBestCloudServer()
 ```
 
@@ -57,7 +57,7 @@ Automatically selects the best region.
 
 ---
 
-```
+```csharp
 bool ConnectToRegion(string region)
 ```
 
@@ -65,7 +65,7 @@ Forces a specific region (e.g., us, eu).
 
 ---
 
-```
+```csharp
 void DisconnectFromServer()
 ```
 
@@ -73,7 +73,7 @@ Gracefully disconnects from Photon.
 
 ---
 
-```
+```csharp
 bool Reconnect()
 ```
 
@@ -81,7 +81,7 @@ Reconnects using cached connection parameters.
 
 ---
 
-```
+```csharp
 bool ReconnectAndRejoin()
 ```
 
@@ -91,7 +91,7 @@ Reconnects and attempts to rejoin the previous room.
 
 ### Lobby & Room Management
 
-```
+```csharp
 bool JoinLobby()
 ```
 
@@ -99,7 +99,7 @@ Joins the default lobby.
 
 ---
 
-```
+```csharp
 bool JoinLobby(TypedLobby typedLobby)
 ```
 
@@ -107,7 +107,7 @@ Joins a specific lobby configuration.
 
 ---
 
-```
+```csharp
 bool LeaveLobby()
 ```
 
@@ -115,7 +115,7 @@ Leaves the current lobby.
 
 ---
 
-```
+```csharp
 bool CreateRoom(
     string roomName,
     RoomOptions roomOptions,
@@ -128,7 +128,7 @@ Creates a room with explicit configuration.
 
 ---
 
-```
+```csharp
 bool JoinRoom(string roomName, string[] expectedUsers)
 ```
 
@@ -136,7 +136,7 @@ Joins an existing room by name.
 
 ---
 
-```
+```csharp
 bool JoinOrCreateRoom(
     string roomName,
     RoomOptions roomOptions,
@@ -149,7 +149,7 @@ Primary matchmaking entry point.
 
 ---
 
-```
+```csharp
 bool JoinRandomRoom()
 ```
 
@@ -157,7 +157,7 @@ Joins any available matching room.
 
 ---
 
-```
+```csharp
 bool LeaveRoom(bool becomeInactive)
 ```
 
@@ -165,7 +165,7 @@ Leaves the room; optionally preserves state for rejoin.
 
 ---
 
-```
+```csharp
 bool SetMasterClient(Player masterClientPlayer)
 ```
 
@@ -173,7 +173,7 @@ Transfers master-client authority.
 
 ---
 
-```
+```csharp
 bool CloseConnection(Player kickPlayer)
 ```
 
@@ -183,7 +183,7 @@ Forcibly removes a player from the room.
 
 ### Networked Object Lifecycle
 
-```
+```csharp
 GameObject Instantiate(
     string prefabName,
     Vector3 position,
@@ -197,7 +197,7 @@ Spawns a player-owned networked object.
 
 ---
 
-```
+```csharp
 GameObject InstantiateSceneObject(
     string prefabName,
     Vector3 position,
@@ -211,7 +211,7 @@ Spawns a scene-owned persistent object.
 
 ---
 
-```
+```csharp
 GameObject InstantiateRoomObject(
     string prefabName,
     Vector3 position,
@@ -225,7 +225,7 @@ Spawns an object owned by the room itself.
 
 ---
 
-```
+```csharp
 void Destroy(GameObject targetGameObject)
 ```
 
@@ -233,7 +233,7 @@ Destroys a networked object by reference.
 
 ---
 
-```
+```csharp
 void Destroy(PhotonView targetView)
 ```
 
@@ -241,7 +241,7 @@ Destroys a networked object by its view.
 
 ---
 
-```
+```csharp
 void DestroyAll()
 ```
 
@@ -249,7 +249,7 @@ Destroys all networked objects in the room.
 
 ---
 
-```
+```csharp
 void DestroyPlayerObjects(Player targetPlayer)
 ```
 
@@ -257,7 +257,7 @@ Destroys all objects owned by a specific player.
 
 ---
 
-```
+```csharp
 void DestroyPlayerObjects(int targetPlayerId)
 ```
 
@@ -267,7 +267,7 @@ Destroys objects using the player's actor number.
 
 ### RPC Facade (Deterministic State Sync)
 
-```
+```csharp
 void Rpc(
     PhotonView view,
     string methodName,
@@ -281,7 +281,7 @@ Use for authoritative gameplay state.
 
 ---
 
-```
+```csharp
 void RpcSecure(
     PhotonView view,
     string methodName,
@@ -295,7 +295,7 @@ Encrypted version of Rpc.
 
 ---
 
-```
+```csharp
 void RpcToPlayer(
     PhotonView view,
     string methodName,
@@ -308,7 +308,7 @@ Targets a single specific player.
 
 ---
 
-```
+```csharp
 void RpcSecureToPlayer(
     PhotonView view,
     string methodName,
@@ -324,7 +324,7 @@ Private, encrypted RPC to one player.
 
 ### RaiseEvent (Transient Signals)
 
-```
+```csharp
 bool RaiseEvent(
     byte eventCode,
     object eventContent,
@@ -338,7 +338,7 @@ Use for non-authoritative signals (FX, UI, audio).
 
 ---
 
-```
+```csharp
 void RegisterEventHandler(
     byte eventCode,
     Action<EventData> handler
@@ -349,7 +349,7 @@ Subscribes to a specific event code.
 
 ---
 
-```
+```csharp
 void UnregisterEventHandler(
     byte eventCode,
     Action<EventData> handler
@@ -362,7 +362,7 @@ Unsubscribes from an event code.
 
 ### Performance & Networking Control
 
-```
+```csharp
 void SetSendRates(int sendRate, int serializationRate)
 ```
 
@@ -370,7 +370,7 @@ Controls network tick rate and serialization frequency.
 
 ---
 
-```
+```csharp
 void SendAllOutgoingCommands()
 ```
 
@@ -380,7 +380,7 @@ Immediately flushes outgoing network traffic.
 
 ### Read-Only State Accessors
 
-```
+```csharp
 bool IsConnected { get; }
 bool IsConnectedAndReady { get; }
 bool InRoom { get; }

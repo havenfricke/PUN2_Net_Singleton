@@ -1,4 +1,4 @@
-### Net Singleton API Reference (Photon PUN)
+### Net Singleton API Reference, PUN 2
 
 Pairs extremely well with my [Unity 6 input module](https://github.com/havenfricke/Unity6_PlayerInputModule).
 

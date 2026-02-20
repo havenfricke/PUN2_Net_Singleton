@@ -4,7 +4,7 @@ Pairs extremely well with my [Unity 6 input module](https://github.com/havenfric
 
 A clean, **single-responsibility network facade** for Unity + Photon PUN.
 
-This repo describes the public API surface of Net, including required arguments, intent, and when to use each method. Gameplay code should interact only with Net.Instance and (locally) its own PhotonView. `Net.cs` does not need to be included in the Unity scene hierarchy and can be called from anywhere in the application (see "Design Contract" below).
+This repo describes the public API surface of `Net.cs`, including required arguments, intent, and when to use each method. Gameplay code should interact only with Net.Instance and (locally) its own PhotonView. `Net.cs` does not need to be included in the Unity scene hierarchy and can be called from anywhere in the application (see "Design Contract" below).
 
 **Player Components** contains `NetPlayerAnimatorSync.cs`, a component for player prefabs. It replaces local `Animator` calls to synchronize player actions over a network. 
 

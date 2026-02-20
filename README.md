@@ -6,6 +6,8 @@ A clean, **single-responsibility network facade** for Unity + Photon PUN.
 
 `Net.cs` singleton describes the public API surface of Net, including required arguments, intent, and when to use each method. Gameplay code should interact only with Net.Instance and (locally) its own PhotonView. `Net.cs` does not need to be included in the Unity scene hierarchy and can be called from anywhere in the application (see "Design Contract" below).
 
+**Player Components** contains `NetPlayerAnimatorSync.cs`, a component for player prefabs. It replaces local `Animator` calls to synchronize player actions over a network. 
+
 **Scene Network GameObject** folder contains `NetAutoJoin.cs`, the main script that handles joining the server. It also contains two optional helpers `NetIdentityDebug.cs` and `NetPingTest.cs`. These go on one `GameObject` in the scene hierarchy. 
 
 **Scene Spawn GameObject** folder contains `PlayerSpawner.cs`. A script that asynchronously handles unavailable spawn points. Place it on a `GameObject` in the scene hierarchy separate from `NetAutoJoin.cs` and other debugging scripts mentioned prior. A subfolder contains `AvailableSpawnHandler.cs` that should be placed on each child `GameObject` (spawn points) where `PlayerSpawner.cs` is located. Once those are added, `PlayerSpawner` has available indecies to add the spawn point child objects. 

@@ -12,18 +12,18 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
 
     private void Awake()
     {
-        this.photonView = this.GetComponent<PhotonView>();
-        if (this.photonView == null)
+        photonView = GetComponent<PhotonView>();
+        if (photonView == null)
         {
             throw new InvalidOperationException("NetAnimatorSync requires a PhotonView on the same GameObject.");
         }
 
-        if (this.animator == null)
+        if (animator == null)
         {
-            this.animator = this.GetComponent<Animator>();
+            animator = this.GetComponent<Animator>();
         }
 
-        if (this.animator == null)
+        if (animator == null)
         {
             throw new InvalidOperationException("NetAnimatorSync requires an Animator (assign in inspector or place in children).");
         }
@@ -36,15 +36,15 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
             throw new ArgumentException("triggerName must be non-empty.", "triggerName");
         }
 
-        this.animator.SetTrigger(triggerName);
+        animator.SetTrigger(triggerName);
 
-        if (this.photonView.IsMine == false)
+        if (photonView.IsMine == false)
         {
             return;
         }
 
         Net.Instance.Rpc(
-            view: this.photonView,
+            view: photonView,
             methodName: "Rpc_SetTrigger",
             target: RpcTarget.Others,
             parameters: new object[] { triggerName }
@@ -58,15 +58,15 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
             throw new ArgumentException("boolName must be non-empty.", "boolName");
         }
 
-        this.animator.SetBool(boolName, value);
+        animator.SetBool(boolName, value);
 
-        if (this.photonView.IsMine == false)
+        if (photonView.IsMine == false)
         {
             return;
         }
 
         Net.Instance.Rpc(
-            view: this.photonView,
+            view: photonView,
             methodName: "Rpc_SetBool",
             target: RpcTarget.Others,
             parameters: new object[] { boolName, value }
@@ -80,15 +80,15 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
             throw new ArgumentException("floatName must be non-empty.", "floatName");
         }
 
-        this.animator.SetFloat(floatName, value);
+        animator.SetFloat(floatName, value);
 
-        if (this.photonView.IsMine == false)
+        if (photonView.IsMine == false)
         {
             return;
         }
 
         Net.Instance.Rpc(
-            view: this.photonView,
+            view: photonView,
             methodName: "Rpc_SetFloat",
             target: RpcTarget.Others,
             parameters: new object[] { floatName, value }
@@ -123,7 +123,7 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
             return;
         }
 
-        this.animator.SetTrigger(triggerName);
+        animator.SetTrigger(triggerName);
     }
 
     [PunRPC]
@@ -134,7 +134,7 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
             return;
         }
 
-        this.animator.SetBool(boolName, value);
+        animator.SetBool(boolName, value);
     }
 
     [PunRPC]
@@ -145,7 +145,7 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
             return;
         }
 
-        this.animator.SetFloat(floatName, value);
+        animator.SetFloat(floatName, value);
     }
 
     [PunRPC]
@@ -156,6 +156,6 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
             return;
         }
 
-        this.animator.CrossFade(stateName, transitionDuration, layer, normalizedTime);
+        animator.CrossFade(stateName, transitionDuration, layer, normalizedTime);
     }
 }

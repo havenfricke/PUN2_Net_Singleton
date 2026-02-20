@@ -25,6 +25,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
+[RequireComponent(typeof(PhotonView))]
 public sealed class Net : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     private static Net instance;

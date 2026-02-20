@@ -4,17 +4,22 @@ Pairs extremely well with my [Unity 6 input module](https://github.com/havenfric
 
 A clean, **single-responsibility network facade** for Unity + Photon PUN.
 
-This document describes the public API surface of Net, including required arguments, intent, and when to use each method. Gameplay code should interact only with Net.Instance and (locally) its own PhotonView.
+`Net.cs` singleton describes the public API surface of Net, including required arguments, intent, and when to use each method. Gameplay code should interact only with Net.Instance and (locally) its own PhotonView. `Net.cs` does not need to be included in the Unity scene hierarchy and can be called from anywhere in the application (see "Design Contract" below).
+
+**Scene Network GameObject** folder contains `NetAutoJoin.cs`, the main script that handles joining the server. It also contains two optional helpers `NetIdentityDebug.cs` and `NetPingTest.cs`. These go on one `GameObject` in the scene hierarchy. 
+
+**Scene Spawn GameObject** folder contains `PlayerSpawner.cs`. A script that asynchronously handles unavailable spawn points. Place it on a `GameObject` in the scene hierarchy separate from `NetAutoJoin.cs` and other debugging scripts mentioned prior. A subfolder contains `AvailableSpawnHandler.cs` that should be placed on each child `GameObject` (spawn points) where `PlayerSpawner.cs` is located. Once those are added, `PlayerSpawner` has available indecies to add the spawn point child objects. 
+
+Best practice is to keep `PlayerSpawner.cs` at `Vector3(0, 0, 0)` in scene and individual spawn points at desired locations.
 
 ---
 
 ### Design Contract
-Gameplay scripts:
 - Call Net.Instance
 - Own a PhotonView
 - Never reference PhotonNetwork
 
-Net:
+### Net.cs
 - Owns Photon callbacks
 - Connects PhotonNetwork
 - Routes intent (connect, sync, events)
@@ -22,6 +27,8 @@ Net:
 ---
 
 ### Connection & Session Flow
+
+---
 
 ```csharp
 bool ConnectUsingSettings()
@@ -90,6 +97,8 @@ Reconnects and attempts to rejoin the previous room.
 ---
 
 ### Lobby & Room Management
+
+---
 
 ```csharp
 bool JoinLobby()
@@ -183,6 +192,8 @@ Forcibly removes a player from the room.
 
 ### Networked Object Lifecycle
 
+---
+
 ```csharp
 GameObject Instantiate(
     string prefabName,
@@ -267,6 +278,8 @@ Destroys objects using the player's actor number.
 
 ### RPC Facade (Deterministic State Sync)
 
+---
+
 ```csharp
 void Rpc(
     PhotonView view,
@@ -324,6 +337,8 @@ Private, encrypted RPC to one player.
 
 ### RaiseEvent (Transient Signals)
 
+---
+
 ```csharp
 bool RaiseEvent(
     byte eventCode,
@@ -362,6 +377,8 @@ Unsubscribes from an event code.
 
 ### Performance & Networking Control
 
+---
+
 ```csharp
 void SetSendRates(int sendRate, int serializationRate)
 ```
@@ -379,6 +396,8 @@ Immediately flushes outgoing network traffic.
 ---
 
 ### Read-Only State Accessors
+
+---
 
 ```csharp
 bool IsConnected { get; }

@@ -12,7 +12,7 @@ This repo describes the public API surface of `Net.cs`, including required argum
 
 **Scene Spawn GameObject** folder contains `PlayerSpawner.cs`. A script that asynchronously handles unavailable spawn points. Place it on a `GameObject` in the scene hierarchy separate from `NetAutoJoin.cs` and other debugging scripts mentioned prior. A subfolder contains `AvailableSpawnHandler.cs` that should be placed on each child `GameObject` (spawn points) where `PlayerSpawner.cs` is located. Once those are added, `PlayerSpawner` has available indecies to add the spawn point child objects. 
 
-Best practice is to keep `PlayerSpawner.cs` at `Vector3(0, 0, 0)` in scene and individual spawn points at desired locations.
+Best practice is to keep `PlayerSpawner.cs` at `Vector3(0, 0, 0)` in scene then, place individual spawn points at desired locations from the origin of `PlayerSpawner.cs`.
 
 ---
 

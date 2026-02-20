@@ -12,20 +12,15 @@ public sealed class NetPlayerAnimatorSync : MonoBehaviour
 
     private void Awake()
     {
-        photonView = GetComponent<PhotonView>();
+        
         if (photonView == null)
         {
-            throw new InvalidOperationException("NetAnimatorSync requires a PhotonView on the same GameObject.");
+            photonView = GetComponent<PhotonView>();
         }
 
         if (animator == null)
         {
-            animator = this.GetComponent<Animator>();
-        }
-
-        if (animator == null)
-        {
-            throw new InvalidOperationException("NetAnimatorSync requires an Animator (assign in inspector or place in children).");
+            animator = GetComponent<Animator>();
         }
     }
 

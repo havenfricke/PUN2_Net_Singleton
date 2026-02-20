@@ -17,13 +17,13 @@ Best practice is to keep `PlayerSpawner.cs` at `Vector3(0, 0, 0)` in scene then,
 ---
 
 ### Design Contract
-- Call Net.Instance
-- Own a PhotonView
-- Never reference PhotonNetwork
+- Call `Net.Instance`
+- Own a `PhotonView`
+- Never reference `PhotonNetwork`
 
 ### Net.cs
 - Owns Photon callbacks
-- Connects PhotonNetwork
+- Connects `PhotonNetwork`
 - Routes intent (connect, sync, events)
 
 ---

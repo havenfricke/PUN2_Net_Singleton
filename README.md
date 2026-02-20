@@ -36,7 +36,7 @@ Best practice is to keep `PlayerSpawner.cs` at `Vector3(0, 0, 0)` in scene then,
 bool ConnectUsingSettings()
 ```
 
-Connects using values from PhotonServerSettings
+Connects using values from [PhotonServerSettings](https://doc.photonengine.com/pun/current/getting-started/initial-setup)
 
 Use at application startup.
 

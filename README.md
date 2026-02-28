@@ -10,8 +10,6 @@ This repo describes the public API surface of `Net.cs`, including required argum
 
 **Scene Network GameObject** folder contains `NetAutoJoin.cs`, the main script that handles joining the server. It also contains two optional helpers `NetIdentityDebug.cs` and `NetPingTest.cs`. These go on one `GameObject` in the scene hierarchy. 
 
-Best practice is to keep `PlayerSpawner.cs` at `Vector3(0, 0, 0)` in scene then, place individual spawn points at desired locations from the origin of `PlayerSpawner.cs`.
-
 ---
 
 ### Design Contract

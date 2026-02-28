@@ -176,7 +176,7 @@ public sealed class Net : MonoBehaviourPunCallbacks, IOnEventCallback
         return result;
     }
 
-    public void DisconnectFromServer()
+    public void DisconnectFromServer()  
     {
         PhotonNetwork.Disconnect();
     }
@@ -253,22 +253,19 @@ public sealed class Net : MonoBehaviourPunCallbacks, IOnEventCallback
         return result;
     }
 
-    public GameObject Instantiate(string prefabName, Vector3 position, Quaternion rotation, byte group, object[] data)
+    public GameObject Instantiate(string prefabName, Vector3 position, Quaternion rotation, byte group = 0, object[] data = null)
     {
-        GameObject spawned = PhotonNetwork.Instantiate(prefabName, position, rotation, group, data);
-        return spawned;
+        return PhotonNetwork.Instantiate(prefabName, position, rotation, group, data);
     }
 
-    public GameObject InstantiateSceneObject(string prefabName, Vector3 position, Quaternion rotation, byte group, object[] data)
+    public GameObject InstantiateSceneObject(string prefabName, Vector3 position, Quaternion rotation, byte group = 0, object[] data = null)
     {
-        GameObject spawned = PhotonNetwork.InstantiateSceneObject(prefabName, position, rotation, group, data);
-        return spawned;
+        return PhotonNetwork.InstantiateRoomObject(prefabName, position, rotation, group, data);
     }
 
     public GameObject InstantiateRoomObject(string prefabName, Vector3 position, Quaternion rotation, byte group, object[] data)
     {
-        GameObject spawned = PhotonNetwork.InstantiateRoomObject(prefabName, position, rotation, group, data);
-        return spawned;
+        return PhotonNetwork.InstantiateRoomObject(prefabName, position, rotation, group, data);
     }
 
     public void Destroy(GameObject targetGameObject)
